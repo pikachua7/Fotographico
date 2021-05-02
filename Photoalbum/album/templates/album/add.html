@@ -24,7 +24,7 @@
       <div class="container">
           <div class="row justify-content-center">
               <div class="col-md-4">
-                    <a href="{% url 'gallery' %}" class="btn btn-outline-dark my-3">Back</a>
+                    <a href="{% url 'gallery' user_id %}" class="btn btn-outline-dark my-3">Back</a>
                   <div class="card">
                     <form method='POST' action="" enctype="multipart/form-data">
                       {% csrf_token %}

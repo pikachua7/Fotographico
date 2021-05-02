@@ -36,6 +36,14 @@
     </style>
   </head>
   <body class="m-5">
+    <nav>
+      <span>
+        Hello, {{request.user}}
+      </span>
+      <span>
+        <a href="{% url 'logout' %}">Logout</a>
+      </span>
+    </nav>
     <div class="container">
       <div class="row">
         <div class="col-md-3">
@@ -51,11 +59,11 @@
             </div>
             <ul class="list-group list-group-flush">
               <li class="list-group-item">
-                <a href="{% url 'gallery' %}">All</a>
+                <a href="{% url 'gallery' user_id %}">All</a>
               </li>
               {% for category in categories %}
               <li class="list-group-item">
-                <a href="{% url 'gallery' %}?category={{category.name}}">{{category.name}}</a> 
+                <a href="{% url 'gallery' user_id %}?category={{category.name}}">{{category.name}}</a> 
               </li>
               {% endfor %}
             </ul>
