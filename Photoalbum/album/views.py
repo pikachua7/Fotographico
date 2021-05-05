@@ -90,3 +90,6 @@ def addPhoto(request):
 
     context={'categories':categories,'user_id':request.user.id}
     return render(request,'album/add.html',context)
+
+def homePage(request):
+    return render(request,'album/home.html',{})

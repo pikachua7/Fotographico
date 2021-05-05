@@ -23,9 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-+o(b_=%71b%np9(%n^uo_-(9o!p(z=)nk3i!)jx$5!p(*2&10s'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['fotografico.herokuapp.com','127.0.0.1']
 
 
 # Application definition
@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'album',
+    'album.apps.AlbumConfig',
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -133,3 +134,10 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+AWS_QUERYSTRING_AUTH = False
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+AWS_ACCESS_KEY_ID = 'AKIAQIOEBRJCWHRCXTUE'
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_STORAGE_BUCKET_NAME = 'onelastime'

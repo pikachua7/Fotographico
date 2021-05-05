@@ -29,66 +29,81 @@
         object-fit: cover;
       }
 
-      .list-group-item a{
+      .list-group-item a {
         text-decoration: none;
-        color:black;
+        color: black;
       }
     </style>
   </head>
-  <body class="m-5">
-    <nav>
-      <span>
-        Hello, {{request.user}}
-      </span>
-      <span>
-        <a href="{% url 'logout' %}">Logout</a>
-      </span>
+  <body>
+    <nav class="navbar navbar-light">
+      <div class="container-fluid">
+          <h6>Hello, {{request.user}} </h6>
+        <span>
+          <a class="btn btn-outline-dark btn-sm" href="{% url 'logout' %}">Logout</a>
+        </span>
+      </div>
     </nav>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-3">
-          <div class="my-2">
-            <a href="{% url 'add' %}" class="btn btn-dark btn-block"
-              >Add Photos</a
-            >
-          </div>
-
-          <div class="card">
-            <div class="card-header">
-              <h6 style="margin-left: 30%">Categories</h6>
+    <div class="m-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3">
+            <div class="my-2">
+              <a href="{% url 'add' %}" class="btn btn-dark btn-block"
+                >Add Photos</a
+              >
             </div>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item">
-                <a href="{% url 'gallery' user_id %}">All</a>
-              </li>
-              {% for category in categories %}
-              <li class="list-group-item">
-                <a href="{% url 'gallery' user_id %}?category={{category.name}}">{{category.name}}</a> 
-              </li>
-              {% endfor %}
-            </ul>
-          </div>
-        </div>
-        <div class="col-md-9">
-          <div class="row">
 
-            {% for photo in photos %}
-            <div class="col-md-4">
-              <div class="card my-2">
-                <img
-                  class="img-thumbnail"
-                  src="{{photo.image.url}}"
-                  alt="Card image cap"
-                />
-                <div class="card-body">
-                  <small>Category : {{photo.category.name}}</small>
-                </div>
-                <a href="{%url 'photo' photo.id%}" class="btn btn-outline-dark btn-sm">View</a>
+            <div class="card">
+              <div class="card-header">
+                <h6 style="margin-left: 30%">Categories</h6>
               </div>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                  <a href="{% url 'gallery' user_id %}">All</a>
+                </li>
+                {% for category in categories %}
+                <li class="list-group-item">
+                  <a
+                    href="{% url 'gallery' user_id %}?category={{category.name}}"
+                    >{{category.name}}</a
+                  >
+                </li>
+                {% endfor %}
+              </ul>
             </div>
-            {% empty %}
-            <h3>No photos...</h3>
-            {% endfor %}
+          </div>
+          <div class="col-md-9">
+            <div class="row">
+              {% for photo in photos %}
+              <div class="col-md-4">
+                <div class="card my-2">
+                  <img
+                    class="img-thumbnail"
+                    src="{{photo.image.url}}"
+                    alt="Card image cap"
+                  />
+                  <div class="card-body">
+                    <small>Category : {{photo.category.name}}</small>
+                  </div>
+                  <a
+                      href="{%url 'photo' photo.id%}"
+                      class="btn btn-outline-dark btn-sm"
+                      >View</a
+                    >
+                    <a
+                      href="{{photo.image.url}}"
+                      class="btn btn-outline-dark btn-sm"
+                      download
+                      >Download</a
+                    >
+                    
+                </div>
+              </div>
+              {% empty %}
+              <h3>No photos...</h3>
+              {% endfor %}
+            </div>
           </div>
         </div>
       </div>
