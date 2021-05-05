@@ -1,1 +1,1 @@
-web: gunicorn Photoalbum.wsgi --log-file -
+web: gunicorn Photoalbum.wsgi
