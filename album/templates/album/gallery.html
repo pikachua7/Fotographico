@@ -16,6 +16,8 @@
       crossorigin="anonymous"
     />
 
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
     <!-- JavaScript Bundle with Popper -->
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
@@ -33,15 +35,27 @@
         text-decoration: none;
         color: black;
       }
+      .bgimg {
+        background-image: url("https://www.w3schools.com/w3images/forestbridge.jpg");
+        min-height: 100%;
+        background-position: center;
+        background-size: cover;
+      }
     </style>
   </head>
-  <body>
-    <nav class="navbar navbar-light">
+  <body class="bgimg">
+    <nav class="navbar navbar-grey bg-light p-1 shadow">
       <div class="container-fluid">
-          <h6>Hello, {{request.user}} </h6>
-        <span>
-          <a class="btn btn-outline-dark btn-sm" href="{% url 'logout' %}">Logout</a>
-        </span>
+        <h6 style="font-style: italic">Hello, {{request.user}}</h6>
+        <h4 style="font-style: oblique; color:black; font-weight: bold;">~FotoGraphico~</h4>
+        <button type="button" class="btn btn-dark">
+        <a
+          href="{% url 'logout' %}"
+          style="font-style: italic; text-decoration: none;"
+          >
+          Logout
+        </a> 
+        </button>
       </div>
     </nav>
     <div class="m-5">
@@ -49,14 +63,19 @@
         <div class="row">
           <div class="col-md-3">
             <div class="my-2">
-              <a href="{% url 'add' %}" class="btn btn-dark btn-block"
-                >Add Photos</a
-              >
+              <button type="button" class="btn btn-dark">
+                <a
+                  href="{% url 'add' %}"
+                  style="font-style: italic; text-decoration: none;"
+                  >
+                  Add Photos
+                </a> 
+                </button>
             </div>
 
             <div class="card">
               <div class="card-header">
-                <h6 style="margin-left: 30%">Categories</h6>
+                <h6 style=" display:flex; justify-content: center;">Categories</h6>
               </div>
               <ul class="list-group list-group-flush">
                 <li class="list-group-item">
@@ -77,27 +96,20 @@
             <div class="row">
               {% for photo in photos %}
               <div class="col-md-4">
-                <div class="card my-2">
+                <div class="card my-2" style="background: none;">
                   <img
                     class="img-thumbnail"
                     src="{{photo.image.url}}"
                     alt="Card image cap"
                   />
-                  <div class="card-body">
-                    <small>Category : {{photo.category.name}}</small>
+                  <div class="card-body" style=" display:flex; justify-content: center;">
+                    <h6 style=" color:white">Category : {{photo.category.name}}</h6>
                   </div>
                   <a
-                      href="{%url 'photo' photo.id%}"
-                      class="btn btn-outline-dark btn-sm"
-                      >View</a
-                    >
-                    <a
-                      href="{{photo.image.url}}"
-                      class="btn btn-outline-dark btn-sm"
-                      download
-                      >Download</a
-                    >
-                    
+                    href="{%url 'photo' photo.id%}"
+                    class="btn btn-outline-light btn-sm"
+                    ><h6>View</h6></a
+                  >
                 </div>
               </div>
               {% empty %}

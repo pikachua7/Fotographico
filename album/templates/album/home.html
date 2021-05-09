@@ -1,1 +1,83 @@
-<h1>Home</h1>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/typed.js"
+    ></script>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <style>
+        body,h1,h3 {font-family: "Raleway", sans-serif}
+        body, html {height: 100%}
+        .bgimg {
+          background-image: url('https://www.w3schools.com/w3images/forestbridge.jpg');
+          min-height: 100%;
+          background-position: center;
+          background-size: cover;
+        }
+        </style>
+    <title>Home</title>
+  </head>
+  <body>
+    <div class="bgimg w3-display-container w3-animate-opacity w3-text-white">
+        <div class="w3-display-topright w3-padding-large w3-xlarge">
+            <button>
+                <a href="{% url 'login' %}" style="text-decoration: none;">Login</a>
+            </button>
+           
+          </div>
+        <div class="w3-display-middle">
+            <h1 style="text-align: center; font-size: 300%">
+                <span id="typed"></span>
+              </h1>
+          <hr class="w3-border-grey" style="margin:auto;width:40%">
+          <h3 style="text-align: center; font-size: 150%">
+            <span id="typednew"></span>
+          </h3>
+        </div>
+      </div>
+    
+    <script>
+      var i = 0;
+      function move() {
+        if (i == 0) {
+          i = 1;
+          var elem = document.getElementById("myBar");
+          var width = 1;
+          var id = setInterval(frame, 100);
+          function frame() {
+            if (width >= 100) {
+              clearInterval(id);
+              i = 0;
+            } else {
+              width++;
+              elem.style.width = width + "%";
+            }
+          }
+        }
+      }
+      var typed = new Typed("#typed", {
+        strings: ["FotoGraphico"],
+        backSpeed: 15,
+        smartBackspace: true,
+        backDelay: 1200,
+        startDelay: 1000,
+        typeSpeed: 25,
+        loop: false,
+      });
+      var typednew = new Typed("#typednew", {
+        strings: ["A place to treasure all your priceless moments..."],
+        backSpeed: 15,
+        smartBackspace: true,
+        backDelay: 1200,
+        startDelay: 1000,
+        typeSpeed: 25,
+        loop: false,
+      });
+    </script>
+  </body>
+</html>
