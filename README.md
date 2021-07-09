@@ -1,1 +1,2 @@
-# One Last Time
+# Gallery App using AWS and Django
+
