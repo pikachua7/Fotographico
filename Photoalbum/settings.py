@@ -135,8 +135,3 @@ MEDIA_URL = '/images/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-AWS_QUERYSTRING_AUTH = False
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-AWS_ACCESS_KEY_ID = 'AKIAQIOEBRJCWHRCXTUE'
-AWS_SECRET_ACCESS_KEY = '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'
-AWS_STORAGE_BUCKET_NAME = 'onelastime'
